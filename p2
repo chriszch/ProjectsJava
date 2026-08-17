@@ -1,0 +1,44 @@
+package exercicio.aula3;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Animal an = new Animal();
+		
+		an.exibirdados();
+				
+	}
+
+}
+
+
+
+
+
+package exercicio.aula3;
+
+public class Animal {
+	
+	String nome = "tralalero";
+	String raca = "cachorro";
+	int idade = 9;
+	
+	public void anome(){
+		System.out.println("Nome: "+nome);
+	} 
+	public void araca(){
+		System.out.println("Raca"+raca);
+	}
+	public void aidade(){
+		System.out.println("Idade: "+idade);
+	}
+
+	public void exibirdados() {
+		System.out.println("o nome do animal e : "+nome);
+		System.out.println("a raca do animal e :"+raca);
+		System.out.println("a idade do animal e :"+idade);
+	}
+
+
+}
