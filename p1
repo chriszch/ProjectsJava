@@ -1,0 +1,43 @@
+package aulas.java_3;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Produto p = new Produto();
+		
+		p.exibirdados();
+		p.entrada(90);
+		p.exibirdados();
+		p.saida(80);
+		p.exibirdados();
+	}
+
+}
+
+
+
+
+package aulas.java_3;
+
+public class Produto {
+	
+	private String descricao = "TV 50 polegadas";
+	private double estoque = 200;
+	
+	
+	
+	public void exibirdados() {
+		System.out.println("Produto: "+ descricao+"\n"+"estoque: "+estoque);
+	}
+	
+	public double entrada(double valor) {
+		estoque =  estoque + valor;
+		return estoque;
+	}
+	
+	public double saida(double valor) {
+		estoque = estoque - valor;
+		return estoque;
+	}
+}
