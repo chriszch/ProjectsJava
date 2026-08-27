@@ -1,0 +1,56 @@
+package exercicio5;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Estoque est = new Estoque();
+		est.arm();
+	}
+
+}
+
+
+package exercicio5;
+
+import java.util.Scanner;
+
+public class Estoque {
+	
+	Scanner scanner = new Scanner(System.in);
+	
+    double estoque = 900;
+    double qtd;
+    
+    public void arm() {
+    	if(estoque > 0) {
+    		System.out.println("digite a quantidade: ");
+    		double estoque = scanner.nextDouble();
+    		estoque = estoque - qtd;
+    		System.out.println("quantidade restante: "+ estoque);
+    	}
+    	else if(estoque <= 0) {
+    		System.out.println("estoque zerado");
+    	}
+    }
+
+}
+
+
+package exercicio5;
+
+import java.util.Scanner;
+
+public class Usuario {	
+	
+	Scanner scanner = new Scanner(System.in);
+	
+	String nome;
+	String cpf;
+	String idade;
+	String senha;
+	
+	public void user() {
+		System.out.println("digite o nome de usuario: ");
+		String nome = scanner.nextLine();
+	}
+}
