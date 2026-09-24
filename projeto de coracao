@@ -1,0 +1,87 @@
+package coracaoanimado;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.RenderingHints;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class CoracaoAnimado extends JPanel implements ActionListener {
+	private Timer timer;
+	private double escala = 0.0;
+	private boolean crescendo = true;
+	
+	public CoracaoAnimado() {
+		setBackground(Color.black);
+		timer = new Timer(16, this);
+		timer.start();
+	}
+	public static void main(String[] args) {
+		JFrame janela = new JFrame("Para o meu amor ❤️");
+		CoracaoAnimado painel = new CoracaoAnimado();
+		
+		janela.add(painel);
+		janela.setSize(800, 600);
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janela.setLocationRelativeTo(null);
+		janela.setVisible(true);
+	}
+	@Override
+	public void actionPerformed(java.awt.event.ActionEvent e) {
+		if(crescendo) {
+			escala += 0.005;
+			if(escala >=1.1) crescendo = false;
+		} else {
+			escala -= 0.005;
+			if(escala <= 0.95) crescendo =  true;
+		}
+		repaint();
+	}
+		
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Graphics2D g2d = (Graphics2D) g;
+			
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			
+			int largura = getWidth();
+			int altura = getHeight();
+			int centroX = largura / 2;
+			int centroY = altura / 2 - 20;
+			
+			g2d.setColor(new Color(225, 20, 147));
+			
+			
+			g2d.translate(centroX, centroY);
+			g2d.scale(escala, escala);
+			
+			Polygon coracaoPrincipal = new Polygon();
+			g2d.setStroke(new java.awt.BasicStroke(3.0f));
+			
+			for (double t = 0; t<= 2 * Math.PI; t += 0.01) {
+				int x = (int) (16 * Math.pow(Math.sin(t), 3));
+				int y = (int) -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+				coracaoPrincipal.addPoint(x * 10, y * 10);
+			}
+			g2d.drawPolygon(coracaoPrincipal);
+			g2d.setTransform(new java.awt.geom.AffineTransform());
+			
+			g2d.setColor(new Color(225,20,147));
+			g2d.setFont(new Font("Arial", Font.BOLD, 32));
+			FontMetrics fm = g2d.getFontMetrics();
+			String texto = "EU TE AMOO ❤️";
+			
+			int textoX = centroX - (fm.stringWidth(texto) / 2);
+			int textoY = centroY + 10;
+			
+			g2d.drawString(texto, textoX, textoY);
+		}
+	}
