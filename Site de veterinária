@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento, - Clínica veterinária</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Agendamento de Consulta Veterinária</h1>
+
+        <form id="agendamentoForm">
+            <div class="form-group">
+                <label for="nomeTutor">Nome do Tutor:</label>
+                <input type="text"id="nomeTutor" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="nomePet">Nome do Pet:</label>
+                    <input type="text"id="nomePet" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="especie">Espécie:</label>
+                    <select id="especie" required>
+                        <option value="Cão">Cão</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <label for="genero">Gênero:</label>
+                    <select id="genero" required>
+                        <option value="macho">macho</option>
+                        <option value="fêmea">fêmea</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataHora">Data e Horário:</label>
+                    <input type="datetime-local"id="dataHora" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" rows="3"></textarea>
+                </div>
+
+                <button type="submit">Agendar Consulta</button>
+        </form>
+        <h2>Consultas Agendadas</h2>
+        <table id="tabelaConsultas">
+            <thead>
+                <tr>
+                    <th>Tutor</th>
+                    <th>Pet</th>
+                    <th>Espécie</th>
+                    <th>Data/Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+</body>
+</html>
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-color: #d8d2d5;
+    padding: 20px;
+    margin: 0;
+}
+container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(230, 220, 220, 0.1);
+}
+h1,h2 {
+    color: #0e0d0d;
+}
+form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display:block;
+    margin-bottom: 10px;
+    font-weight: bolder;
+}
+input, select, textarea {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #240606;
+    border-radius: 10px;
+}
+
+button {
+    width: 30%;
+    padding: 9px;
+    background-color: #000000;
+    color: rgb(245, 245, 245);
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+button::hover{
+    background-color: #e0e0e0;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: left;
+}
+
+th{
+    padding: 10px;
+    border-bottom: #0a0a0a;
+    text-align: left;
+    background-color: #faf6f6;
+    border-radius: 9px;
+}
