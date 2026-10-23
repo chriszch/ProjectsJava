@@ -1,0 +1,42 @@
+package com.veterinaria.api.model;
+
+public class Agendamento {
+	private String nomeTutor;
+	private String nomePet;
+	private String servico;
+	private String telefone;
+	
+	public Agendamento() {}
+	
+	public String getNomeTutor() {
+		return nomeTutor;
+	}
+	public void setnomeTutor(String nomeTutor) {
+		this.nomeTutor = nomeTutor;
+	}
+	
+	public String getNomePet() {
+		return nomePet;
+	}
+	public void setNomePet(String nomePet) {
+		this.nomePet = nomePet;
+	}
+	
+	public String getServico() {
+		return servico;
+	}
+	public void setServico(String servico) {
+		this.servico = servico;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	
+	
+	
+}
