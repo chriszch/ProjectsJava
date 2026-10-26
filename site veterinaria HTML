@@ -62,49 +62,5 @@
             </tbody>
         </table>
 	</div>
-		
-		<script>
-			const form = document.getElementById('agendamentoForm');
-			const form = document.getElementById('tabelaConsultas').querySelector('body');
-			
-			form.addEventListener('submit', function(e) {
-				e.preventDefault();
-			
-			const agendamento = {
-				nomeTutor: documment.getElementById('nomeTutor').value,
-				nomePet: documment.getElementById('nomePet').value,
-				especie: documment.getElementById('especie').value,
-				genero: documment.getElementById('genero').value,
-				dataHora: documment.getElementById('dataHora').value,
-				observacoes: documment.getElementById('observacoes').value
-			};
-			
-			fetch('http://localhost:8080/api/agendamentos',){
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(agendamento)
-			})
-			
-			.then(response => response.text())
-			.then(data => {
-				alert(data);
-				
-				const novaLinha = tabela.insertRow();
-				novaLinha.insertCell(0).innerText = agendamento.nomeTutor;
-				novaLinha.insertCell(1).innerText = agendamento.nomePet;
-				novaLinha.insertCell(2).innerText = agendamento.especie;
-				novaLinha.insertCell(3).innerText = agendamento.dataHora;
-				
-				form,reset();
-			})
-			.catch(error => {
-				console.error('Erro ao conectar com a API', error);
-				alert('Ocorreu um erro ao conectar com o servidor java');
-				
-				});
-			});
-		</script>	
 </body>
 </html>
