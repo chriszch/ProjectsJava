@@ -58,9 +58,55 @@
                 </tr>
             </thead>
             <tbody>
-                
+                <script>
+                const form = document.getElementById('agendamentoForm');
+const tabela = document.getElementById('tabelaConsultas').querySelector('tbody');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const agendamento = {
+        nomeTutor: document.getElementById('nomeTutor').value,
+        nomePet: document.getElementById('nomePet').value,
+        especie: document.getElementById('especie').value,
+        genero: document.getElementById('genero').value,
+        dataHora: document.getElementById('dataHora').value,
+        observacoes: document.getElementById('observacoes').value
+    };
+
+    fetch('http://localhost:8080/api/agendamentos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(agendamento)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Falha ao salvar o agendamento');
+        }
+        return response.text();
+    })
+    .then(data => {
+        alert(data);
+
+        // Adiciona o novo agendamento na tabela visualmente
+        const novaLinha = tabela.insertRow();
+        novaLinha.insertCell(0).innerText = agendamento.nomeTutor;
+        novaLinha.insertCell(1).innerText = agendamento.nomePet;
+        novaLinha.insertCell(2).innerText = agendamento.especie;
+        novaLinha.insertCell(3).innerText = agendamento.dataHora;
+
+        form.reset();
+    })
+    .catch(error => {
+        console.error('Erro ao conectar com a API:', error);
+        alert('Ocorreu um erro ao conectar com o servidor Java.');
+    });
+});
+</script>
             </tbody>
         </table>
-	</div>
+
 </body>
 </html>
